@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Decision Helper</title>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+<header class="header">
+    <div class="title-row">
+        <h1>Decision Helper</h1>
+        <span id="apiStatus" class="status">Starting…</span>
+    </div>
+    <p class="subtitle">
+        Compare options using weighted criteria and get a clear winner.
+    </p>
+</header>
+
+<div class="page">
+    <main class="grid">
+
+        <!-- OPTIONS -->
+        <section class="card">
+            <h2>1) Options (max 8)</h2>
+            <div class="row">
+                <input id="optionInput" type="text" placeholder="e.g. Move to Mannheim" />
+                <button id="addOptionBtn" type="button">Add</button>
+            </div>
+            <ul id="optionsList" class="list"></ul>
+
+            <div class="row right">
+                <button id="loadExampleBtn" class="btn-secondary" type="button">Load example</button>
+                <button id="clearAllBtn" class="btn-secondary" type="button">Clear all</button>
+            </div>
+        </section>
+
+        <!-- CRITERIA -->
+        <section class="card">
+            <h2>2) Criteria (max 8)</h2>
+
+            <div class="row">
+                <input id="criterionInput" type="text" placeholder="e.g. Salary" />
+
+                <div class="field-with-help">
+                    <input
+                            id="weightInput"
+                            type="number"
+                            min="1"
+                            max="5"
+                            step="1"
+                            value="3"
+                            aria-label="Weight"
+                    />
+                    <span class="hint">
+            <button class="hint-btn" type="button" aria-label="What is weight?">i</button>
+            <span class="hint-pop">
+              <strong>Weight (1–5)</strong><br />
+              How important the criterion is.<br />
+              1 = low impact, 5 = critical.
+            </span>
+          </span>
+                </div>
+
+                <button id="addCriterionBtn" type="button">Add</button>
+            </div>
+
+            <ul id="criteriaList" class="list"></ul>
+        </section>
+
+        <!-- MATRIX -->
+        <section class="card wide">
+            <h2 class="h2-with-inline">
+                3) Scores matrix (1–10)
+                <span class="hint inline">
+          <button class="hint-btn" type="button" aria-label="What is score?">i</button>
+          <span class="hint-pop">
+            <strong>Score (1–10)</strong><br />
+            How good an option is for a criterion.<br />
+            1 = very bad, 10 = excellent.
+          </span>
+        </span>
+            </h2>
+
+            <div id="matrixWrap" class="matrix-wrap">
+                <div class="muted">Add at least 2 options and 1 criterion to build the matrix.</div>
+            </div>
+
+            <div class="row right">
+                <button id="evaluateBtn" disabled type="button">Evaluate</button>
+            </div>
+
+            <div id="errorBox" class="error hidden"></div>
+        </section>
+
+        <!-- RESULTS -->
+        <section class="card wide">
+            <h2>Results</h2>
+            <div id="winner" class="winner muted">—</div>
+
+            <details class="details" open>
+                <summary>Why this winner?</summary>
+                <div id="whyWrap" class="muted">—</div>
+            </details>
+
+            <div id="resultsWrap" class="results-wrap muted">—</div>
+        </section>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="help">
+        <h3>How it works</h3>
+
+        <p><strong>Options</strong> are the alternatives you want to compare.</p>
+
+        <p><strong>Criteria</strong> are the aspects that matter
+            (salary, rent, growth, etc.).</p>
+
+        <p>
+            <strong>Weight (1–5)</strong> = importance of a criterion.<br />
+            1 = low, 5 = critical.
+        </p>
+
+        <p>
+            <strong>Score (1–10)</strong> = how good an option is for a criterion.
+        </p>
+
+        <p>
+            <strong>Calculation:</strong><br />
+            score × weight → sum all → winner
+        </p>
+
+        <p class="muted">
+            Tip: Start with “Load example” to see it in action.
+        </p>
+    </aside>
+</div>
+
+<script>
+    window.API_URL = "http://localhost:8080";
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
