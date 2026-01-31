@@ -1,0 +1,1 @@
+window.API_URL = "https://decision-helper-java-production.up.railway.app";
