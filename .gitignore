@@ -1,10 +1,20 @@
 HELP.md
+
+# Maven
 target/
-decision-helper-java/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS ###
+# Maven Wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Spring Tool Suite / Eclipse
 .apt_generated
 .classpath
 .factorypath
@@ -13,21 +23,24 @@ decision-helper-java/.mvn/wrapper/maven-wrapper.jar
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-decision-helper-java/.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
+
+# Gradle
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
+# VS Code
 .vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
